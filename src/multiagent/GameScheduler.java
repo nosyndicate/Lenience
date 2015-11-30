@@ -26,8 +26,8 @@ public class GameScheduler implements Steppable {
 		
 		game.play(firstPlayer.getAction(), secondPlayer.getAction());
 		
-		firstPlayer.learning();
-		secondPlayer.learning();
+		firstPlayer.learning(game);
+		secondPlayer.learning(game);
 		
 		if(game.isGameEnd()) {
 			game.resetGame();

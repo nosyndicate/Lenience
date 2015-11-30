@@ -1,11 +1,7 @@
 package multiagent;
 
-import java.awt.Color;
 import sim.display.Controller;
-import sim.display.Display2D;
 import sim.engine.SimState;
-import sim.portrayal.simple.LabelledPortrayal2D;
-import sim.portrayal.simple.MovablePortrayal2D;
 import mason.sim.display.GUIState;
 
 public class CooperativeWithUI extends GUIState {

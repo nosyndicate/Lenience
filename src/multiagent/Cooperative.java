@@ -49,8 +49,8 @@ public class Cooperative extends SimState {
 		processArguments();
 		
 		game = new Game(gameFile);
-		playerOne = Player.getPlayer(firstPlayerType, firstPlayerParameters);
-		playerTwo = Player.getPlayer(secondPlayerType, secondPlayerParameters);
+		playerOne = Player.getPlayer(firstPlayerType, firstPlayerParameters, 0, game);
+		playerTwo = Player.getPlayer(secondPlayerType, secondPlayerParameters, 1, game);
 		schuduler = new GameScheduler(playerOne, playerTwo);
 		schedule.scheduleRepeating(schuduler);
 		

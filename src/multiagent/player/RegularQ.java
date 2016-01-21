@@ -36,7 +36,7 @@ public class RegularQ extends Player {
 	}
 
 	@Override
-	protected int getAction(SimState sim) {
+	protected int getAction(Game game) {
 		switch (actionSelectionStrategy) {
 		case 0:
 

@@ -18,7 +18,7 @@ public class Wolf extends Player{
 	}
 
 	@Override
-	protected int getAction(SimState sim) {
+	protected int getAction(Game game) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

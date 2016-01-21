@@ -1,8 +1,11 @@
 package multiagent.player;
 
+import java.util.Random;
+
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 import multiagent.Player;
+import sim.engine.SimState;
 
 public class RegularQ extends Player {
 
@@ -14,7 +17,7 @@ public class RegularQ extends Player {
 	private int actionSelectionStrategy;
 
 	public RegularQ(ParameterDatabase parameters, int id, Game game) {
-		super(id);
+		super(id, game);
 		numAction = game.numActions[id];
 		numState = game.numStates;
 		QTable = new double[numState][numAction];
@@ -33,7 +36,7 @@ public class RegularQ extends Player {
 	}
 
 	@Override
-	protected int getAction() {
+	protected int getAction(SimState sim) {
 		switch (actionSelectionStrategy) {
 		case 0:
 

@@ -1,13 +1,14 @@
 package multiagent.player;
 
 import multiagent.Player;
+import sim.engine.SimState;
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 
 public class Wolf extends Player{
 
 	public Wolf(ParameterDatabase parameters, int id, Game game) {
-		super(id);
+		super(id, game);
 	}
 
 	@Override
@@ -17,7 +18,7 @@ public class Wolf extends Player{
 	}
 
 	@Override
-	protected int getAction() {
+	protected int getAction(SimState sim) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

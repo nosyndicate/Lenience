@@ -1,0 +1,6 @@
+alpha = 0.1
+gamma = 0.9
+dw = 0.03
+dl = 0.06
+epsilon = 0.1
+ed = nil

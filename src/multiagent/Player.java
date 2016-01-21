@@ -9,6 +9,8 @@ import multiagent.player.Hysteretic;
 import multiagent.player.Lenience;
 import multiagent.player.RegularQ;
 import multiagent.player.Wolf;
+import sim.engine.SimState;
+import sun.nio.cs.ext.TIS_620;
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 
@@ -18,13 +20,15 @@ public abstract class Player {
 	protected int state;
 	protected double reward;
 	protected int id;
+
 	
-	protected Player(int id) {
+	protected Player(int id, Game game) {
 		this.id = id;
+
 	}
 
 	protected abstract void learning(Game game);
-	protected abstract int getAction();
+	protected abstract int getAction(SimState sim);
 	
 	
 	protected boolean isFirstAgent() {

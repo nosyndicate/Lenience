@@ -1,0 +1,19 @@
+{
+	"Name":"Climb",
+	"AgentOneAction":3,
+	"AgentTwoAction":3,
+	"StartState":0,
+	"Matrices":[
+		{
+			"Rewards":[[{"Type":"Discrete","10":0.5,"12":0.5},{"Type":"Discrete","5":0.5,"-65":0.5},{"Type":"Discrete","8":0.5,"-8":0.5}],
+					   [{"Type":"Discrete","5":0.5,"-65":0.5},{"Type":"Discrete","14":0.5,"0":0.5}, {"Type":"Discrete","12":0.5,"0":0.5}],
+					   [{"Type":"Discrete","5":0.5,"-5":0.5}, {"Type":"Discrete","5":0.5,"-5":0.5}, {"Type":"Discrete","10":0.5,"0":0.5}]],
+			"Transitions":[[{"1":1},{"1":1},{"1":1}],
+			               [{"1":1},{"1":1},{"1":1}],
+			               [{"1":1},{"1":1},{"1":1}]]
+		},
+		{
+			"Type":"NULL"	
+		}
+	]
+}

@@ -3,11 +3,12 @@ package multiagent.player;
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 import multiagent.Player;
+import sim.engine.SimState;
 
 public class Hysteretic extends Player {
 
 	public Hysteretic(ParameterDatabase parameters, int id, Game game) {
-		super(id);
+		super(id, game);
 	}
 
 	@Override
@@ -17,7 +18,7 @@ public class Hysteretic extends Player {
 	}
 
 	@Override
-	protected int getAction() {
+	protected int getAction(SimState sim) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -24,7 +24,7 @@ public class GameScheduler implements Steppable {
 		Player firstPlayer = cooperative.playerOne;
 		Player secondPlayer = cooperative.playerTwo;
 		
-		game.play(firstPlayer.getAction(), secondPlayer.getAction());
+		game.play(firstPlayer.getAction(cooperative), secondPlayer.getAction(cooperative));
 		
 		firstPlayer.learning(game);
 		secondPlayer.learning(game);
@@ -32,6 +32,7 @@ public class GameScheduler implements Steppable {
 		if(game.isGameEnd()) {
 			game.resetGame();
 		}
+		
 	}
 
 }

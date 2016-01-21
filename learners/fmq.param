@@ -1,0 +1,5 @@
+alpha = 0.1
+gamma = 0.9
+weight = 1.0
+maxtemp = 500
+maxmove = 2000

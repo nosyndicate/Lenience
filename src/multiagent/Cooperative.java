@@ -2,6 +2,7 @@ package multiagent;
 
 import edu.gmu.cs.multiagent.matrix.Game;
 import sim.engine.SimState;
+import sim.engine.Stoppable;
 
 
 
@@ -15,6 +16,9 @@ public class Cooperative extends SimState {
 	public String firstPlayerParameters;
 	public String secondPlayerType;
 	public String secondPlayerParameters;
+	public double times;
+	public double iterations;
+	public Stoppable stopper;
 	public Game game;
 	public GameScheduler schuduler;
 	public Player playerOne;
@@ -51,9 +55,8 @@ public class Cooperative extends SimState {
 		game = new Game(gameFile);
 		playerOne = Player.getPlayer(firstPlayerType, firstPlayerParameters, 0, game);
 		playerTwo = Player.getPlayer(secondPlayerType, secondPlayerParameters, 1, game);
-		schuduler = new GameScheduler(playerOne, playerTwo);
-		schedule.scheduleRepeating(schuduler);
-		
+		schuduler = new GameScheduler(playerOne, playerTwo, times, iterations);
+		stopper = schedule.scheduleRepeating(schuduler);
 		
 	}
 
@@ -77,6 +80,14 @@ public class Cooperative extends SimState {
 		
 		if(arguments !=null && keyExists("-2p", arguments)) {
 			secondPlayerParameters = argumentForKey("-2p", arguments);
+		}
+		
+		if(arguments !=null && keyExists("-iter", arguments)) {
+			iterations = Double.parseDouble(argumentForKey("-iter", arguments));
+		}
+		
+		if(arguments !=null && keyExists("-t", arguments)) {
+			times = Double.parseDouble(argumentForKey("-t", arguments));
 		}
 		
 	}

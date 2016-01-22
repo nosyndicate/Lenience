@@ -8,7 +8,19 @@ import edu.gmu.cs.multiagent.matrix.Game;
 public class Wolf extends Player{
 
 	public Wolf(ParameterDatabase parameters, int id, Game game) {
-		super(id, game);
+		super(parameters, id, game);
+	}
+	
+	@Override
+	protected void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	protected void processParameters(ParameterDatabase parameters) {
+		
+		
 	}
 
 	@Override
@@ -18,9 +30,17 @@ public class Wolf extends Player{
 	}
 
 	@Override
-	protected int getAction(Game game) {
+	protected int getAction(SimState sim) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	protected int[] extractPolicy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

@@ -10,7 +10,7 @@ public class Lenience extends Player{
 	private double[][] temperature;
 
 	public Lenience(ParameterDatabase parameters, int id, Game game) {
-		super(id, game);
+		super(parameters, id, game);
 		
 		int actionNum = game.numActions[this.isFirstAgent()?0:1];
 		int stateNum = game.numStates;
@@ -22,7 +22,20 @@ public class Lenience extends Player{
 		this.initializeQValueTable(stateNum, actionNum, value);
 		this.initializeTemperatureTable(stateNum, actionNum, temperature);
 	}
+	
+	@Override
+	protected void reset() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	
+
+	@Override
+	protected void processParameters(ParameterDatabase parameters) {
+		
+		
+	}
 	
 	private void initializeTemperatureTable(int stateNum, int actionNum, double maxTemp) {
 		this.temperature = new double[stateNum][actionNum];
@@ -42,8 +55,19 @@ public class Lenience extends Player{
 	}
 
 	@Override
-	protected int getAction(Game game) {
+	protected int getAction(SimState sim) {
 		return 0;
 	}
 
+
+
+	@Override
+	protected int[] extractPolicy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 }

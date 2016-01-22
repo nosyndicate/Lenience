@@ -33,13 +33,18 @@ public abstract class Player {
 	}
 
 	
-	protected Player(int id, Game game) {
+	protected Player(ParameterDatabase parameters, int id, Game game) {
 		this.id = id;
 		this.game = game;
+		this.processParameters(parameters);
 	}
 
 	protected abstract void learning(Game game);
-	protected abstract int getAction(Game game);
+	protected abstract int getAction(SimState sim);
+	protected abstract void processParameters(ParameterDatabase parameters);
+	protected abstract int[] extractPolicy();
+	protected abstract void reset();
+
 	
 	protected void initializeQValueTable(int stateNum, int actionNum, double value) {
 		qTable = new double[stateNum][actionNum];
@@ -51,15 +56,7 @@ public abstract class Player {
 		}
 	}
 	
-	protected int boltzmannSelection(double[] ds, double temperature2) {
-		return 0;
-		
-	}
 	
-	protected int epsilonGreedy(double[] ds, double epsilon2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	
 	protected boolean isFirstAgent() {
@@ -104,4 +101,5 @@ public abstract class Player {
 		}
 	}
 
+	
 }

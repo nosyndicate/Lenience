@@ -1,12 +1,13 @@
 package multiagent.player;
 
-import javax.media.j3d.Alpha;
+
 
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 import multiagent.Player;
+import multiagent.Utils;
 import sim.engine.SimState;
-import sim.util.distribution.Gamma;
+
 
 public class Hysteretic extends Player {
 	
@@ -21,17 +22,33 @@ public class Hysteretic extends Player {
 	private double beta = 0;
 
 	public Hysteretic(ParameterDatabase parameters, int id, Game game) {
-		super(id, game);
+		super(parameters, id, game);
 		
 		// TODO:need to initialize selection mode there
 		
 		int stateNum = game.numStates;
-		int actionNum = game.numActions[this.isFirstAgent()?0:1];
+		int actionNum = game.numActions[id];
 		
 		state = game.currentState;
 		
 		this.initializeQValueTable(stateNum, actionNum, INITIAL_VALUE);
 	}
+	
+	
+	@Override
+	protected void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	@Override
+	protected void processParameters(ParameterDatabase parameters) {
+		
+		
+	}
+
 
 	@Override
 	protected void learning(Game game) {
@@ -45,10 +62,10 @@ public class Hysteretic extends Player {
 		double temporalDifference = rewardTerm - qTable[state][action];
 		
 		if(temporalDifference >= 0) {
-			qTable[state][action] = qTable[state][action] + alpha*temporalDifference;
+			qTable[state][action] = qTable[state][action] + alpha * temporalDifference;
 		}
 		else
-			qTable[state][action] = qTable[state][action] + beta *temporalDifference;
+			qTable[state][action] = qTable[state][action] + beta * temporalDifference;
 
 		// s <- s'
 		state = game.currentState;
@@ -56,22 +73,30 @@ public class Hysteretic extends Player {
 	}
 
 	@Override
-	protected int getAction(Game game) {
+	protected int getAction(SimState sim) {
 		
 		if(mode==ActionMode.TEMPERATURE) {
-			action = boltzmannSelection(this.qTable[state], temperature);
+			action = Utils.boltzmannSelection(sim.random, temperature, this.qTable[state]);
 			temperature *= temperatureDecay;
 		}
 		else if(mode==ActionMode.EPSILONGREEDY) {
-			action = epsilonGreedy(qTable[state], epsilon);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
 		}
 		else if(mode==ActionMode.DECREASEDEPSILONGREEDY) {
-			action = epsilonGreedy(qTable[state], epsilon);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
 			epsilon *= epsilon*epsilonDecay;
 		}
 		return action;
 	}
 
+
+	@Override
+	protected int[] extractPolicy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	
 
 	

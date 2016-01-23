@@ -1,0 +1,19 @@
+{
+	"Name":"Penalty",
+	"StartState":0,
+	"Matrices":[
+		{
+			"Rewards":[[{"Type":"Discrete","10":1}, {"Type":"Discrete","0":1},{"Type":"Discrete","-10":1}],
+					   [{"Type":"Discrete","0":1},{"Type":"Discrete","2":1},  {"Type":"Discrete","0":1}],
+					   [{"Type":"Discrete","-10":1},  {"Type":"Discrete","0":1},  {"Type":"Discrete","10":1}]],
+			"Transitions":[[{"1":1},{"1":1},{"1":1}],
+			               [{"1":1},{"1":1},{"1":1}],
+			               [{"1":1},{"1":1},{"1":1}]],
+			"Policy":[[0,0],[2,2]],
+			"Trajectory":1
+		},
+		{
+			"Type":"NULL"	
+		}
+	]
+}

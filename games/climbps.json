@@ -1,7 +1,5 @@
 {
-	"Name":"Climb",
-	"AgentOneAction":3,
-	"AgentTwoAction":3,
+	"Name":"Climb-PS",
 	"StartState":0,
 	"Matrices":[
 		{
@@ -10,7 +8,9 @@
 					   [{"Type":"Discrete","0":1},  {"Type":"Discrete","0":1},  {"Type":"Discrete","5":1}]],
 			"Transitions":[[{"1":1},{"1":1},{"1":1}],
 			               [{"1":1},{"1":1},{"1":1}],
-			               [{"1":1},{"1":1},{"1":1}]]
+			               [{"1":1},{"1":1},{"1":1}]],
+			"Policy":[[0,0]],
+			"Trajectory":1
 		},
 		{
 			"Type":"NULL"	

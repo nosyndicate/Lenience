@@ -1,0 +1,40 @@
+{
+	"Name":"Relative Overgeneralization 1",
+	"StartState":0,
+	"Matrices":[
+		{
+			"Rewards":[[{"Type":"Discrete","0":1},{"Type":"Discrete","0":1},{"Type":"Discrete","0":1}],
+					   [{"Type":"Discrete","0":1},{"Type":"Discrete","0":1},{"Type":"Discrete","0":1}],
+					   [{"Type":"Discrete","0":1},{"Type":"Discrete","0":1},{"Type":"Discrete","0":1}]],
+			"Transitions":[[{"1":1},{"0":1},{"0":1}],
+			               [{"1":1},{"0":1},{"0":1}],
+			               [{"0":1},{"0":1},{"2":1}]],
+			"Policy":[[1,0],[0,1]],
+			"Trajectory":1
+		},
+		{
+			"Rewards":[[{"Type":"Discrete","0":1},{"Type":"Discrete","-10":1}],
+					   [{"Type":"Discrete","-10":1},{"Type":"Discrete","-5":1}]],
+			"Transitions":[[{"3":1},{"0":1}],
+			               [{"0":1},{"1":1}]],
+			"Policy":[[1,0],[0,1]],
+			"Trajectory":0
+		},
+		{
+			"Rewards":[[{"Type":"Discrete","10":1},{"Type":"Discrete","0":1}],
+					   [{"Type":"Discrete","0":1},{"Type":"Discrete","5":1}]],
+			"Transitions":[[{"3":1},{"0":1}],
+			               [{"0":1},{"2":1}]],
+			"Policy":[[1,0],[0,1]],
+			"Trajectory":0
+		},
+		{
+			"Rewards":[[{"Type":"Discrete","-10":1},{"Type":"Discrete","-20":1}],
+					   [{"Type":"Discrete","-20":1},{"Type":"Discrete","-15":1}]],
+			"Transitions":[[{"3":1},{"2":1}],
+			               [{"2":1},{"1":1}]],
+			"Policy":[[1,0],[0,1]],
+			"Trajectory":0
+		},
+	]
+}

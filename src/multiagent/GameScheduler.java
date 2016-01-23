@@ -23,6 +23,7 @@ public class GameScheduler implements Steppable {
 		this.iterations = iterations;
 		this.iterationCounter = 0;
 		this.timesCounter = 0;
+		this.results = new int[3];
 	}
 	
 	@Override
@@ -53,7 +54,7 @@ public class GameScheduler implements Steppable {
 			if(timesCounter == times)
 			{
 				// print the results
-				System.out.printf("The result is %d/%d, %d/%d, %d/%d%n", results[0], times, results[1], times, results[2], times);
+				System.out.printf("The result is %d, %d, %d%n", results[0], results[1], results[2]);
 				
 				// then stop the simulation
 				Cooperative c = (Cooperative)state;
@@ -62,12 +63,16 @@ public class GameScheduler implements Steppable {
 			
 			// the experiement is not ended, reset the agents
 			// reset the agents
-			firstPlayer.reset();
-			secondPlayer.reset();
+			game.resetGame();
+			firstPlayer.reset(game.currentState);
+			secondPlayer.reset(game.currentState);
+			
 		}
 		
 		if(game.isGameEnd()) {
 			game.resetGame();
+			firstPlayer.setState(game.currentState);
+			secondPlayer.setState(game.currentState);
 		}
 		
 	}

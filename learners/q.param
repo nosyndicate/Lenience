@@ -1,7 +1,39 @@
-alpha=0.1
-gamma=0.9
+# ============  default ==============
+#alpha=0.1
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============ climb ==============
+#alpha=0.1
+#gamma=0.9
+#epsilon=0.0
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============ climb-ps ==============
+#alpha=0.1
+#gamma=0.9
+#epsilon=0.01
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============ climb-fs ==============
+alpha=0.05
+gamma=0.8
 epsilon=0.1
 epsilondecay=1.0
 temperature=50
 temperaturedecay=0.999
 mode=2
+
+
+
+

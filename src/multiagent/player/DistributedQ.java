@@ -17,6 +17,12 @@ public class DistributedQ extends Player {
 		
 		this.initializeQValueTable(stateNum, actionNum, INITIAL_VALUE);
 	}
+	
+	@Override
+	protected void reset(int state) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	protected void learning(Game game) {
@@ -41,10 +47,6 @@ public class DistributedQ extends Player {
 		return null;
 	}
 
-	@Override
-	protected void reset() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

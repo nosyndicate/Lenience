@@ -24,17 +24,15 @@ public class RegularQ extends Player {
 
 	public RegularQ(ParameterDatabase parameters, int id, Game game) {
 		super(parameters, id, game);
-		int actionNum = game.numActions[id];
-		int stateNum = game.numStates;
-		
-		this.initializeQValueTable(stateNum, actionNum, 0);
-		
+		numActions = game.numActions[id];
+		numStates = game.numStates;
+
 	}
 	
 	@Override
-	protected void reset() {
-		// TODO Auto-generated method stub
-		
+	protected void reset(int state) {
+		this.initializeQValueTable(numStates, numActions, INITIAL_VALUE);
+		this.setState(state);
 	}
 	
 
@@ -83,8 +81,14 @@ public class RegularQ extends Player {
 
 	@Override
 	protected int[] extractPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+		int[] policy = new int[numStates];
+		for(int i = 0;i<numStates;++i)
+		{
+			int index = maxAt(qTable[i]);
+			policy[i] = index;
+		}
+		
+		return policy;
 	}
 
 

@@ -12,7 +12,7 @@ public class FMQ extends Player{
 	}
 	
 	@Override
-	protected void reset() {
+	protected void reset(int state) {
 		// TODO Auto-generated method stub
 		
 	}

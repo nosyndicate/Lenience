@@ -55,6 +55,13 @@ public class Cooperative extends SimState {
 		game = new Game(gameFile);
 		playerOne = Player.getPlayer(firstPlayerType, firstPlayerParameters, 0, game);
 		playerTwo = Player.getPlayer(secondPlayerType, secondPlayerParameters, 1, game);
+		
+		// reset the game and player
+		game.resetGame();
+		playerOne.reset(game.currentState);
+		playerTwo.reset(game.currentState);
+		
+		// start experiement
 		schuduler = new GameScheduler(playerOne, playerTwo, times, iterations);
 		stopper = schedule.scheduleRepeating(schuduler);
 		

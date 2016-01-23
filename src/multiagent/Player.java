@@ -25,6 +25,8 @@ public abstract class Player {
 	protected double[][] qTable;
 	protected ActionMode mode;
 	protected Game game;
+	protected int numActions;
+	protected int numStates;
 	
 	protected enum ActionMode {
 		TEMPERATURE,
@@ -43,7 +45,7 @@ public abstract class Player {
 	protected abstract int getAction(SimState sim);
 	protected abstract void processParameters(ParameterDatabase parameters);
 	protected abstract int[] extractPolicy();
-	protected abstract void reset();
+	protected abstract void reset(int state);
 
 	
 	protected void initializeQValueTable(int stateNum, int actionNum, double value) {
@@ -70,6 +72,20 @@ public abstract class Player {
 		}
 		
 		return max;
+	}
+	
+	protected int maxAt(double[] array) {
+		int index = -1;
+		double max = Double.NEGATIVE_INFINITY;
+		for(int i = 0;i<array.length;++i) {
+			if(array[i]>max)
+			{
+				max = array[i];
+				index = i;
+			}
+		}
+		
+		return index;
 	}
 
 	public static Player getPlayer(String playerType, String parameterFiles,
@@ -99,6 +115,10 @@ public abstract class Player {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void setState(int currentState) {
+		this.state = currentState;
 	}
 
 	

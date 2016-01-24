@@ -1,3 +1,6 @@
+print-params = true
+
+
 # ============  default ==============
 #alpha=0.1
 #gamma=0.9
@@ -7,7 +10,80 @@
 #temperaturedecay=0.999
 #mode=2
 
-# ============ climb ==============
+
+# ============ boutilier ============== ok
+#alpha=0.05
+#gamma=0.8
+#epsilon=0.1
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============ karl ============== ok
+#alpha=0.03
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  gradient1 ==============
+#alpha=0.15
+#gamma=1
+#epsilon=0.35
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  gradient2 ==============
+#alpha=0.95
+#gamma=0.9
+#epsilon=0.3
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  heaven ============== ok
+#alpha=0.15
+#gamma=0.7
+#epsilon=0.1
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  ro1 ==============
+#alpha=0.15
+#gamma=1
+#epsilon=0.13
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  ro2 ==============
+#alpha=0.1
+#gamma=0.9
+#epsilon=0.25
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============  ro3 ==============
+alpha=0.13
+gamma=0.9
+epsilon=0.13
+epsilondecay=1.0
+temperature=50
+temperaturedecay=0.999
+mode=2
+
+# ============ climb ============== ok
 #alpha=0.1
 #gamma=0.9
 #epsilon=0.0
@@ -16,7 +92,7 @@
 #temperaturedecay=0.999
 #mode=2
 
-# ============ climb-ps ==============
+# ============ climb-ps ============== 
 #alpha=0.1
 #gamma=0.9
 #epsilon=0.01
@@ -26,13 +102,25 @@
 #mode=2
 
 # ============ climb-fs ==============
-alpha=0.05
-gamma=0.8
-epsilon=0.1
-epsilondecay=1.0
-temperature=50
-temperaturedecay=0.999
-mode=2
+#alpha=0.05
+#gamma=0.8
+#epsilon=0.1
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+# ============ penalty ============== ok
+#alpha=0.05
+#gamma=0.9
+#epsilon=0.35
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
+
+
+
 
 
 

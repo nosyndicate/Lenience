@@ -27,11 +27,10 @@ public class Hysteretic extends Player {
 		// TODO:need to initialize selection mode there
 		
 		int stateNum = game.numStates;
-		int actionNum = game.numActions[id];
 		
 		state = game.currentState;
 		
-		this.initializeQValueTable(stateNum, actionNum, INITIAL_VALUE);
+		this.initializeQValueTable(game.stateList, isFirstAgent(), INITIAL_VALUE);
 	}
 	
 	
@@ -56,16 +55,16 @@ public class Hysteretic extends Player {
 		double rewardTerm = game.getReward(this.isFirstAgent());
 		
 		if(!game.isGameEnd()) {
-			rewardTerm += gamma*maxOf(qTable[game.currentState]);
+			rewardTerm += gamma*maxOf(qTable.get(game.currentState));
 		}
 		
-		double temporalDifference = rewardTerm - qTable[state][action];
+		double temporalDifference = rewardTerm - qTable.get(state)[action];
 		
 		if(temporalDifference >= 0) {
-			qTable[state][action] = qTable[state][action] + alpha * temporalDifference;
+			qTable.get(state)[action] = qTable.get(state)[action] + alpha * temporalDifference;
 		}
 		else
-			qTable[state][action] = qTable[state][action] + beta * temporalDifference;
+			qTable.get(state)[action] = qTable.get(state)[action] + beta * temporalDifference;
 
 		// s <- s'
 		state = game.currentState;
@@ -76,14 +75,14 @@ public class Hysteretic extends Player {
 	protected int getAction(SimState sim) {
 		
 		if(mode==ActionMode.TEMPERATURE) {
-			action = Utils.boltzmannSelection(sim.random, temperature, this.qTable[state]);
+			action = Utils.boltzmannSelection(sim.random, temperature, qTable.get(state));
 			temperature *= temperatureDecay;
 		}
 		else if(mode==ActionMode.EPSILONGREEDY) {
-			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable.get(state));
 		}
 		else if(mode==ActionMode.DECREASEDEPSILONGREEDY) {
-			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable.get(state));
 			epsilon *= epsilon*epsilonDecay;
 		}
 		return action;

@@ -2,6 +2,7 @@ package multiagent;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.sun.security.auth.NTDomainPrincipal;
 
@@ -15,6 +16,7 @@ import sim.engine.SimState;
 import sun.nio.cs.ext.TIS_620;
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
+import edu.gmu.cs.multiagent.matrix.State;
 
 public abstract class Player {
 
@@ -22,10 +24,9 @@ public abstract class Player {
 	protected int state;
 	protected double reward;
 	protected int id;
-	protected double[][] qTable;
+	protected ArrayList<Double[]> qTable;
 	protected ActionMode mode;
 	protected Game game;
-	protected int numActions;
 	protected int numStates;
 	
 	protected enum ActionMode {
@@ -48,13 +49,20 @@ public abstract class Player {
 	protected abstract void reset(int state);
 
 	
-	protected void initializeQValueTable(int stateNum, int actionNum, double value) {
-		qTable = new double[stateNum][actionNum];
+	protected void initializeQValueTable(ArrayList<State> stateList, boolean firstAgent, double value) {
+		qTable = new ArrayList<Double[]>();
 		
-		for(int i = 0;i<stateNum;++i)
+		
+		for(int i = 0;i<stateList.size();++i)
 		{
-			for(int j = 0;j<actionNum;++j)
-				qTable[i][j] = value;
+			State state = stateList.get(i);
+			int numAction = firstAgent?state.numAgent1Action:state.numAgent2Action;
+			Double[] qValues = new Double[numAction];
+			for(int j = 0;j<qValues.length;++j)
+			{
+				qValues[j] = value;
+			}
+			qTable.add(qValues);
 		}
 	}
 	
@@ -65,7 +73,7 @@ public abstract class Player {
 		return id==0;
 	}
 	
-	protected double maxOf(double[] array) {
+	protected double maxOf(Double[] array) {
 		double max = Double.NEGATIVE_INFINITY;
 		for(int i = 0;i<array.length;++i) {
 			max = Math.max(array[i], max);
@@ -74,7 +82,7 @@ public abstract class Player {
 		return max;
 	}
 	
-	protected int maxAt(double[] array) {
+	protected int maxAt(Double[] array) {
 		int index = -1;
 		double max = Double.NEGATIVE_INFINITY;
 		for(int i = 0;i<array.length;++i) {

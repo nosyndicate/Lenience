@@ -17,7 +17,7 @@ public class Utils {
 		}
 	}
 	
-	public static int epsilonGreedy(MersenneTwisterFast random, double epsilon, double[] values) {
+	public static int epsilonGreedy(MersenneTwisterFast random, double epsilon, Double[] values) {
 		if(random.nextDouble()<epsilon)
 		{
 			return random.nextInt(values.length);
@@ -37,7 +37,7 @@ public class Utils {
 		}
 	}
 	
-	public static int orderedEpsilonGreedy(MersenneTwisterFast random, double epsilon, double[] values) {
+	public static int orderedEpsilonGreedy(MersenneTwisterFast random, double epsilon, Double[] values) {
 		if(random.nextDouble()<epsilon)
 		{
 			return random.nextInt(values.length);
@@ -68,7 +68,7 @@ public class Utils {
 		return pool;
 	}
 	
-	private static ArrayList<Integer> bestActionsPool(double[] values){
+	private static ArrayList<Integer> bestActionsPool(Double[] values){
 		ArrayList<Integer> pool = new ArrayList<Integer>();
 		double max =  Double.NEGATIVE_INFINITY;
 		for(int i = 0;i<values.length;++i)
@@ -96,7 +96,7 @@ public class Utils {
 		return pool.get(0);
 	}
 	
-	public static int orderedBestAction(double[] values) {
+	public static int orderedBestAction(Double[] values) {
 		ArrayList<Integer> pool = bestActionsPool(values);
 		
 		// alway return the first one
@@ -115,7 +115,7 @@ public class Utils {
 		return index;
 	}
 	
-	public static int bestAction(MersenneTwisterFast random, double[] values) {
+	public static int bestAction(MersenneTwisterFast random, Double[] values) {
 		ArrayList<Integer> pool = bestActionsPool(values);
 		
 		// choose randomly from the pool
@@ -160,7 +160,7 @@ public class Utils {
 	}
 
 	
-	public static int boltzmannSelection(MersenneTwisterFast random, double temperature, double[] values)
+	public static int boltzmannSelection(MersenneTwisterFast random, double temperature, Double[] values)
 	{
 		ArrayList<Double> prob = new ArrayList<Double>();
 		double sum = 0;

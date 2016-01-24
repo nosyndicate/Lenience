@@ -51,6 +51,11 @@ public class GameScheduler implements Steppable {
 			iterationCounter = 0;
 			timesCounter++;
 			
+			
+			if(timesCounter%1000==0)
+				System.out.println("step:"+timesCounter);
+			
+			
 			if(timesCounter == times)
 			{
 				// print the results

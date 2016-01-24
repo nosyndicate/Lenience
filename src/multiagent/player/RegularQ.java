@@ -1,9 +1,5 @@
 package multiagent.player;
 
-import java.util.Random;
-
-
-
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 import multiagent.Player;
@@ -24,14 +20,13 @@ public class RegularQ extends Player {
 
 	public RegularQ(ParameterDatabase parameters, int id, Game game) {
 		super(parameters, id, game);
-		numActions = game.numActions[id];
 		numStates = game.numStates;
 
 	}
 	
 	@Override
 	protected void reset(int state) {
-		this.initializeQValueTable(numStates, numActions, INITIAL_VALUE);
+		this.initializeQValueTable(game.stateList, isFirstAgent(), INITIAL_VALUE);
 		this.setState(state);
 	}
 	
@@ -52,9 +47,9 @@ public class RegularQ extends Player {
 	protected void learning(Game game) {
 		double target = game.getReward(isFirstAgent());
 		if (!game.isGameEnd())
-			target += gamma * maxOf(qTable[game.currentState]);
+			target += gamma * maxOf(qTable.get(game.currentState));
 
-		qTable[state][action] = (1 - alpha) * qTable[state][action] + alpha
+		qTable.get(state)[action] = (1 - alpha) * qTable.get(state)[action] + alpha
 				* target;
 		
 		//s<-s'
@@ -63,15 +58,16 @@ public class RegularQ extends Player {
 
 	@Override
 	protected int getAction(SimState sim) {
+		
 		if(mode==ActionMode.TEMPERATURE) {
-			action = Utils.boltzmannSelection(sim.random, temperature, qTable[state]);
+			action = Utils.boltzmannSelection(sim.random, temperature, qTable.get(state));
 			temperature *= temperatureDecay;
 		}
 		else if(mode==ActionMode.EPSILONGREEDY) {
-			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable.get(state));
 		}
 		else if(mode==ActionMode.DECREASEDEPSILONGREEDY) {
-			action = Utils.epsilonGreedy(sim.random, epsilon, qTable[state]);
+			action = Utils.epsilonGreedy(sim.random, epsilon, qTable.get(state));
 			epsilon *= epsilon*epsilonDecay;
 		}
 
@@ -84,7 +80,7 @@ public class RegularQ extends Player {
 		int[] policy = new int[numStates];
 		for(int i = 0;i<numStates;++i)
 		{
-			int index = maxAt(qTable[i]);
+			int index = maxAt(qTable.get(i));
 			policy[i] = index;
 		}
 		

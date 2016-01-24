@@ -12,15 +12,7 @@ public class Lenience extends Player{
 	public Lenience(ParameterDatabase parameters, int id, Game game) {
 		super(parameters, id, game);
 		
-		int actionNum = game.numActions[this.isFirstAgent()?0:1];
-		int stateNum = game.numStates;
 		
-		// TODO: need to deal with initialization value here
-		int value = 0;
-		double temperature = 50;
-		
-		this.initializeQValueTable(stateNum, actionNum, value);
-		this.initializeTemperatureTable(stateNum, actionNum, temperature);
 	}
 	
 	@Override

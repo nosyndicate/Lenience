@@ -13,9 +13,7 @@ public class DistributedQ extends Player {
 		super(parameters, id, game);
 		
 		int stateNum = game.numStates;
-		int actionNum = game.numActions[this.isFirstAgent()?0:1];
 		
-		this.initializeQValueTable(stateNum, actionNum, INITIAL_VALUE);
 	}
 	
 	@Override

@@ -36,9 +36,21 @@ public class Wolf extends Player{
 	}
 
 	@Override
-	protected int[] extractPolicy() {
+	protected int[] extractPolicy(SimState sim) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void printQTable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printPolicy() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

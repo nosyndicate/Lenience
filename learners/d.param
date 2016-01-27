@@ -1,3 +1,81 @@
-gamma = 0.9
-epsilon = 0.1
-actionSelection = ed
+print-params = true
+
+
+# ============  default ==============
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#mode=2
+
+
+# ============  boutilier ==============  ok
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#mode=2
+
+# ============  karl ============== 
+#gamma=0.9
+#epsilon=0.2
+#epsilondecay=0.9
+#mode=1
+
+# ============  gradient1 ==============  ok
+#gamma=0.9
+#epsilon=0.4
+#epsilondecay=1.0
+#mode=2
+
+# ============  gradient2 ============== 
+#gamma=0.9
+#epsilon=0.01
+#epsilondecay=1.0
+#mode=2
+
+# ============  heaven ============== ok
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#mode=2
+
+# ============  ro1 ============== ok
+#gamma=0.9
+#epsilon=0.15
+#epsilondecay=1.0
+#mode=2
+
+# ============  ro2 ==============
+gamma=0.9
+epsilon=0.4
+epsilondecay=1.0
+mode=2
+
+# ============  ro3 ==============
+#gamma=0.9
+#epsilon=0.0
+#epsilondecay=1.0
+#mode=2
+
+# ============  climb ============== ok
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#mode=2
+
+# ============  climb-ps ==============
+#gamma=0.9
+#epsilon=0.0
+#epsilondecay=1.0
+#mode=2
+
+# ============  climb-fs ==============
+#gamma=0.9
+#epsilon=0.01
+#epsilondecay=1.0
+#mode=2
+
+# ============  penalty ==============
+#gamma=0.9
+#epsilon=0.1
+#epsilondecay=1.0
+#mode=2

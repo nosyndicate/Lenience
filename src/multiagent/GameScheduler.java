@@ -28,13 +28,24 @@ public class GameScheduler implements Steppable {
 	
 	@Override
 	public void step(SimState state) {
+		
+		
+		
 		Cooperative cooperative = (Cooperative) state;
 		Game game = cooperative.game;
 		
 		Player firstPlayer = cooperative.playerOne;
 		Player secondPlayer = cooperative.playerTwo;
 		
-		game.play(firstPlayer.getAction(cooperative), secondPlayer.getAction(cooperative));
+		int action1 = firstPlayer.getAction(cooperative);
+		int action2 = secondPlayer.getAction(cooperative);
+		
+		//System.out.println("current state is "+game.currentState);
+		game.play(action1, action2);
+		
+		//System.out.println("action 1 is "+action1+", action two is "+action2);
+		//System.out.println("reward is "+game.getReward(true)+","+game.getReward(false));
+		//System.out.println("next state is "+game.currentState);
 		
 		firstPlayer.learning(game);
 		secondPlayer.learning(game);
@@ -43,17 +54,29 @@ public class GameScheduler implements Steppable {
 		if(iterationCounter == iterations)
 		{
 			//check policy if the learning phase is ended
-			int[] policy1 = firstPlayer.extractPolicy();
-			int[] policy2 = secondPlayer.extractPolicy();
+			int[] policy1 = firstPlayer.extractPolicy(state);
+			int[] policy2 = secondPlayer.extractPolicy(state);
 			
-			results[game.checkPolicy(policy1, policy2)]++;
+			int type = game.checkPolicy(policy1, policy2);
+			results[type]++;
 			
 			iterationCounter = 0;
 			timesCounter++;
 			
+//			if(type==0)
+//			{
+//				firstPlayer.printQTable();
+//				firstPlayer.printPolicy();
+//				
+//				secondPlayer.printQTable();
+//				secondPlayer.printPolicy();
+//			}
+			
+			
+			
 			
 			if(timesCounter%1000==0)
-				System.out.println("step:"+timesCounter);
+				System.out.println("time:"+timesCounter);
 			
 			
 			if(timesCounter == times)

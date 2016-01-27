@@ -29,7 +29,7 @@ print-params = true
 #temperaturedecay=0.999
 #mode=2
 
-# ============  gradient1 ==============
+# ============  gradient1 ============== ok
 #alpha=0.15
 #gamma=1
 #epsilon=0.35
@@ -57,15 +57,15 @@ print-params = true
 #mode=2
 
 # ============  ro1 ==============
-#alpha=0.15
-#gamma=1
-#epsilon=0.13
-#epsilondecay=1.0
-#temperature=50
-#temperaturedecay=0.999
-#mode=2
+alpha=0.15
+gamma=1
+epsilon=0.13
+epsilondecay=1.0
+temperature=50
+temperaturedecay=0.999
+mode=2
 
-# ============  ro2 ==============
+# ============  ro2 ============== ok
 #alpha=0.1
 #gamma=0.9
 #epsilon=0.25
@@ -74,14 +74,14 @@ print-params = true
 #temperaturedecay=0.999
 #mode=2
 
-# ============  ro3 ==============
-alpha=0.13
-gamma=0.9
-epsilon=0.13
-epsilondecay=1.0
-temperature=50
-temperaturedecay=0.999
-mode=2
+# ============  ro3 ============== ok
+#alpha=0.13
+#gamma=0.9
+#epsilon=0.13
+#epsilondecay=1.0
+#temperature=50
+#temperaturedecay=0.999
+#mode=2
 
 # ============ climb ============== ok
 #alpha=0.1

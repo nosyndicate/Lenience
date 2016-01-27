@@ -76,15 +76,27 @@ public class RegularQ extends Player {
 
 
 	@Override
-	protected int[] extractPolicy() {
+	protected int[] extractPolicy(SimState sim) {
 		int[] policy = new int[numStates];
 		for(int i = 0;i<numStates;++i)
 		{
-			int index = maxAt(qTable.get(i));
+			int index = maxAt(qTable.get(i), sim.random);
 			policy[i] = index;
 		}
 		
 		return policy;
+	}
+
+	@Override
+	public void printQTable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printPolicy() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -3,8 +3,9 @@ package multiagent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
-import com.sun.security.auth.NTDomainPrincipal;
+import com.sun.istack.internal.Pool;
 
 import multiagent.player.DistributedQ;
 import multiagent.player.FMQ;
@@ -13,7 +14,7 @@ import multiagent.player.Lenience;
 import multiagent.player.RegularQ;
 import multiagent.player.Wolf;
 import sim.engine.SimState;
-import sun.nio.cs.ext.TIS_620;
+import ec.util.MersenneTwisterFast;
 import ec.util.ParameterDatabase;
 import edu.gmu.cs.multiagent.matrix.Game;
 import edu.gmu.cs.multiagent.matrix.State;
@@ -45,9 +46,10 @@ public abstract class Player {
 	protected abstract void learning(Game game);
 	protected abstract int getAction(SimState sim);
 	protected abstract void processParameters(ParameterDatabase parameters);
-	protected abstract int[] extractPolicy();
+	protected abstract int[] extractPolicy(SimState sim);
 	protected abstract void reset(int state);
-
+	public abstract void printQTable();
+	public abstract void printPolicy();
 	
 	protected void initializeQValueTable(ArrayList<State> stateList, boolean firstAgent, double value) {
 		qTable = new ArrayList<Double[]>();
@@ -82,18 +84,30 @@ public abstract class Player {
 		return max;
 	}
 	
-	protected int maxAt(Double[] array) {
-		int index = -1;
+	// break tie randomly
+	protected int maxAt(Double[] array, MersenneTwisterFast random) {
+		ArrayList<Integer> pool = new ArrayList<Integer>();
+		
+		if(array.length==0)
+			return -1;
+
 		double max = Double.NEGATIVE_INFINITY;
 		for(int i = 0;i<array.length;++i) {
 			if(array[i]>max)
 			{
 				max = array[i];
-				index = i;
+				pool.clear();	
+			}
+			
+			if(array[i]==max){
+				pool.add(i);
 			}
 		}
 		
-		return index;
+		int index = random.nextInt(pool.size());
+		return pool.get(index);
+		
+
 	}
 
 	public static Player getPlayer(String playerType, String parameterFiles,
